@@ -4,6 +4,8 @@ function configCurrentWeather(weather) {
     //loader
     //current date
     //city
+    const $currentWeatherCity = document.querySelector('#current-weather-city');
+    debugger
     //temp
     //bg need to change like a weather
 }
