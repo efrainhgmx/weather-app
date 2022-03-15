@@ -1,18 +1,13 @@
 import weather from "../data/current-weather.js";
+import { formatDate } from "./utils/format-date.js";
 
 function setCurrentCity($element, city) {
     $element.textContent = city;
 }
 
-const config = {
-    day: 'numeric',
-    weekday: 'long',
-    month: 'long'
-}
-
 function setCurrentDate($element) {
     const date = new Date();
-    const formattedDate = new Intl.DateTimeFormat('es', config).format(date);
+    const formattedDate = formatDate(date);
     $element.textContent = formattedDate;
 }
 
