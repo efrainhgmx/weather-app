@@ -7,6 +7,8 @@ function setCurrentCity($element, city) {
 function configCurrentWeather(weather) {
     //loader
     //current date
+    const $currentWeatherDate = document.querySelector('#current-weather-date');
+    setCurrentDate($currentWeatherDate);
     //city
     const $currentWeatherCity = document.querySelector('#current-weather-city');
     const city = weather.name;
