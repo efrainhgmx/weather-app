@@ -11,6 +11,11 @@ function setCurrentDate($element) {
     $element.textContent = formattedDate;
 }
 
+function setCurrentTemp($element, temp) {
+    $element.textContent = temp;
+}
+
+
 function configCurrentWeather(weather) {
     //loader
     //current date
@@ -21,6 +26,8 @@ function configCurrentWeather(weather) {
     const city = weather.name;
     setCurrentCity($currentWeatherCity, city);
     //temp
+    const $currentWeatherTemp = document.querySelector('#current-weather-temp');
+    setCurrentTemp($currentWeatherTemp, '5')
     //bg need to change like a weather
 }
 
