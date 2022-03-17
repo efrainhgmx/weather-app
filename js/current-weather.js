@@ -16,6 +16,15 @@ function setCurrentTemp($element, temp) {
 }
 
 
+function solarStatus() {
+    return 'night';
+}
+
+
+function setBackground($element, solarStatus) {
+    $element.style.backgroundImage = `url(../images/${solarStatus}-clean.jpg)`;
+}
+
 function configCurrentWeather(weather) {
     //loader
     //current date
@@ -30,6 +39,8 @@ function configCurrentWeather(weather) {
     const temperature = weather.main.temp;
     setCurrentTemp($currentWeatherTemp, temperature);
     //bg need to change like a weather
+    const $app = document.querySelector('#app');
+    setBackground($app, solarStatus());
 }
 
 export default function currentWeather() {
