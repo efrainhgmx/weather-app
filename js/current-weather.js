@@ -1,5 +1,5 @@
 import weather from "../data/current-weather.js";
-import { formatDate, formatTemp } from "./utils/format-data.js";
+import { formatDate, formatTemp, sunTimeFormat } from "./utils/format-data.js";
 
 function setCurrentCity($element, city) {
     $element.textContent = city;
@@ -16,8 +16,18 @@ function setCurrentTemp($element, temp) {
 }
 
 
-function solarStatus() {
-    return 'night';
+function solarStatus(sunsetTime, sunriseTime) {
+    const currentHours = new Date().getHours();
+    const sunsetHours = sunsetTime.getHours();
+    const sunriseHours = sunriseTime.getHours();
+
+    console.log("sunset", sunsetHours, "sunrise", sunriseHours);
+
+    if(currentHours > sunsetHours || currentHours < sunriseHours) {
+        return 'night';
+    }
+
+    return 'morning';
 }
 
 
@@ -39,8 +49,10 @@ function configCurrentWeather(weather) {
     const temperature = weather.main.temp;
     setCurrentTemp($currentWeatherTemp, temperature);
     //bg need to change like a weather
+    const sunriseTime = sunTimeFormat(weather.sys.sunrise);
+    const sunsetTime = sunTimeFormat(weather.sys.sunset);
     const $app = document.querySelector('#app');
-    setBackground($app, solarStatus());
+    setBackground($app, solarStatus(sunsetTime, sunriseTime));
 }
 
 export default function currentWeather() {

@@ -10,5 +10,8 @@ export function formatDate(date, config = defualtDateConfig) {
 
 export function formatTemp(value) {
     return `${Math.floor(value)}°`;
+}
 
+export function sunTimeFormat(sunTime) {
+    return new Date(sunTime * 1000);
 }
