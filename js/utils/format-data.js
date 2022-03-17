@@ -7,3 +7,8 @@ const defualtDateConfig = {
 export function formatDate(date, config = defualtDateConfig) {
    return new Intl.DateTimeFormat('es', config).format(date);
 }
+
+export function formatTemp(value) {
+    return `${value}°`;
+
+}

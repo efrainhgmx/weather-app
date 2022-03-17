@@ -1,5 +1,5 @@
 import weather from "../data/current-weather.js";
-import { formatDate } from "./utils/format-date.js";
+import { formatDate, formatTemp } from "./utils/format-data.js";
 
 function setCurrentCity($element, city) {
     $element.textContent = city;
@@ -12,7 +12,7 @@ function setCurrentDate($element) {
 }
 
 function setCurrentTemp($element, temp) {
-    $element.textContent = temp;
+    $element.textContent = formatTemp(temp);
 }
 
 
