@@ -9,6 +9,6 @@ export function formatDate(date, config = defualtDateConfig) {
 }
 
 export function formatTemp(value) {
-    return `${value}°`;
+    return `${Math.floor(value)}°`;
 
 }

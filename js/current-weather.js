@@ -27,7 +27,8 @@ function configCurrentWeather(weather) {
     setCurrentCity($currentWeatherCity, city);
     //temp
     const $currentWeatherTemp = document.querySelector('#current-weather-temp');
-    setCurrentTemp($currentWeatherTemp, '5')
+    const temperature = weather.main.temp;
+    setCurrentTemp($currentWeatherTemp, temperature);
     //bg need to change like a weather
 }
 
