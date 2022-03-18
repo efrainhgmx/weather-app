@@ -21,8 +21,6 @@ function solarStatus(sunsetTime, sunriseTime) {
     const sunsetHours = sunsetTime.getHours();
     const sunriseHours = sunriseTime.getHours();
 
-    console.log("sunset", sunsetHours, "sunrise", sunriseHours);
-
     if(currentHours > sunsetHours || currentHours < sunriseHours) {
         return 'night';
     }
