@@ -30,8 +30,9 @@ function solarStatus(sunsetTime, sunriseTime) {
 }
 
 
-function setBackground($element, solarStatus) {
-    $element.style.backgroundImage = `url(../images/${solarStatus}-clean.jpg)`;
+function setBackground($element, conditionCode,solarStatus) {
+    const weatherType = weatherConditionsCodes[conditionCode];
+    $element.style.backgroundImage = `url(../images/${solarStatus}-${weatherType}.jpg)`;
 }
 
 function configCurrentWeather(weather) {
@@ -51,7 +52,8 @@ function configCurrentWeather(weather) {
     const sunriseTime = sunTimeFormat(weather.sys.sunrise);
     const sunsetTime = sunTimeFormat(weather.sys.sunset);
     const $app = document.querySelector('#app');
-    setBackground($app, solarStatus(sunsetTime, sunriseTime));
+    const conditionCode = String(weather.weather[0].id.charAt(0));
+    setBackground($app, conditionCode,solarStatus(sunsetTime, sunriseTime));
 }
 
 export default function currentWeather() {
