@@ -1,5 +1,6 @@
 import weather from "../data/current-weather.js";
 import { formatDate, formatTemp, sunTimeFormat } from "./utils/format-data.js";
+import { weatherConditionsCodes } from "./constants.js";
 
 function setCurrentCity($element, city) {
     $element.textContent = city;
