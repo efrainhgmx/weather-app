@@ -33,8 +33,7 @@ function solarStatus(sunsetTime, sunriseTime) {
 function setBackground($element, conditionCode, solarStatus) {
     const weatherType = weatherConditionsCodes[conditionCode];
     //For Retina Display devices or 2x pixel density
-    const size = (true) ? '@2x' : '';
-    console.log(size);
+    const size = (window.matchMedia('(-webkit-min-device-pixel-ratio: 2)').matches) ? '@2x' : '';
     $element.style.backgroundImage = `url(../images/${solarStatus}-${weatherType}${size}.jpg)`;
 }
 
@@ -55,7 +54,7 @@ function configCurrentWeather(weather) {
     const sunriseTime = sunTimeFormat(weather.sys.sunrise);
     const sunsetTime = sunTimeFormat(weather.sys.sunset);
     const $app = document.querySelector('#app');
-    const conditionCode = String(weather.weather[0].id.charAt(0));
+    const conditionCode = String(weather.weather[0].id).charAt(0);
     setBackground($app, conditionCode,solarStatus(sunsetTime, sunriseTime));
 }
 
