@@ -2,8 +2,10 @@ function geolocationSupport() {
     return 'geolocation' in navigator;
 };
 
-function getCurrentPosition() {
+export function getCurrentPosition() {
     if(!geolocationSupport()) throw new Error('No hay soporte de geolocalizacion en tu navegador');
 
-    navigator.geolocation.getCurrentPosition()
+    navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position);
+    })
 }

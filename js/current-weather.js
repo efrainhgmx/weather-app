@@ -1,6 +1,7 @@
 import weather from "../data/current-weather.js";
 import { formatDate, formatTemp, sunTimeFormat } from "./utils/format-data.js";
 import { weatherConditionsCodes } from "./constants.js";
+import { getCurrentPosition } from "./geolocation.js";
 
 function setCurrentCity($element, city) {
     $element.textContent = city;
@@ -59,6 +60,7 @@ function configCurrentWeather(weather) {
 }
 
 export default function currentWeather() {
+    getCurrentPosition();
     configCurrentWeather(weather);
     console.log(weather);
 }
