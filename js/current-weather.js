@@ -60,7 +60,10 @@ function configCurrentWeather(weather) {
 }
 
 export default function currentWeather() {
-    getCurrentPosition();
+    getCurrentPosition()
+        .then((data) => {
+            console.log({data});
+        })
     configCurrentWeather(weather);
     console.log(weather);
 }
