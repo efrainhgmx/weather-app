@@ -64,6 +64,7 @@ export default function currentWeather() {
         .then((data) => {
             console.log({data});
         })
+        .catch(console.log);
     configCurrentWeather(weather);
     console.log(weather);
 }

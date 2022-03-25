@@ -15,7 +15,9 @@ export function getCurrentPosition() {
                 lon
             })
             console.log(lat, lon);
-        })
+        }, () => {
+            reject('no obtuvimos tu ubicación')
+        }, {})
     });
 
 }
