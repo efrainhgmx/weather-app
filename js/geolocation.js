@@ -2,7 +2,15 @@ function geolocationSupport() {
     return 'geolocation' in navigator;
 };
 
-export function getCurrentPosition() {
+
+const defaultOptions = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 100_000,
+
+}
+
+export function getCurrentPosition(options = defaultOptions) {
     if(!geolocationSupport()) throw new Error('No hay soporte de geolocalizacion en tu navegador');
 
     return new Promise((resolve, reject) => {
@@ -17,7 +25,7 @@ export function getCurrentPosition() {
             console.log(lat, lon);
         }, () => {
             reject('no obtuvimos tu ubicación')
-        }, {})
+        }, options);
     });
 
 }
