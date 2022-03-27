@@ -59,12 +59,19 @@ function configCurrentWeather(weather) {
     setBackground($app, conditionCode,solarStatus(sunsetTime, sunriseTime));
 }
 
-export default function currentWeather() {
-    getCurrentPosition()
+export default async function currentWeather() {
+   try {
+    const { lat, lon } = await getCurrentPosition();
+    console.log(lat, lon);
+   } catch (error) {
+       console.error(error);
+   }
+
+    /* getCurrentPosition()
         .then((data) => {
             console.log({data});
         })
-        .catch(console.log);
+        .catch(console.log); */
     configCurrentWeather(weather);
     console.log(weather);
 }
