@@ -18,14 +18,16 @@ export function getCurrentPosition(options = defaultOptions) {
             console.log(position);
             const lat  =  position.coords.latitude;
             const lon  =  position.coords.longitude;
-            resolve({
-                lat,
-                lon
-            })
+            resolve(position)
             console.log(lat, lon);
         }, () => {
             reject('no obtuvimos tu ubicación')
         }, options);
     });
 
+}
+
+export async function getLatLon(options = defaultOptions) {
+   const { coords: { latitude: lat, longitude: lon } } = await getCurrentPosition(options);
+   return { lat, lon, isError: false };
 }
