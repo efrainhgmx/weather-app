@@ -28,6 +28,10 @@ export function getCurrentPosition(options = defaultOptions) {
 }
 
 export async function getLatLon(options = defaultOptions) {
-   const { coords: { latitude: lat, longitude: lon } } = await getCurrentPosition(options);
-   return { lat, lon, isError: false };
+   try {
+     const { coords: { latitude: lat, longitude: lon } } = await getCurrentPosition(options);
+     return { lat, lon, isError: false };
+   } catch (error) {
+       return { lat: null, long: null, isError: true };
+   }
 }
