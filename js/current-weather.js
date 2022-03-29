@@ -1,4 +1,4 @@
-import weather from "../data/current-weather.js";
+//import weather from "../data/current-weather.js";
 import { formatDate, formatTemp, sunTimeFormat } from "./utils/format-data.js";
 import { weatherConditionsCodes } from "./constants.js";
 import { getLatLon } from "./geolocation.js";
@@ -67,8 +67,7 @@ export default async function currentWeather() {
         ? console.log("Error al ubicarte")
         : console.log(lat, lon);
 
-    const { data } = await getCurrentWeather(lat, lon);
-    console.log(data);
+    const { isError: currenWeatherError, data: weather } = await getCurrentWeather(lat, lon);
     configCurrentWeather(weather);
-    //console.log(weather);
+    console.log(weather);
 }
