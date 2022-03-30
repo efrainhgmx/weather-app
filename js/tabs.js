@@ -19,10 +19,16 @@ function nextDay(day) {
 
 function handleSelectTabClick(event) {
     const $tabSelected = event.target;
+    const $tabActive = document.querySelector('.tab[aria-selected="true"');
+    $tabActive.removeAttribute('aria-selected');
+    $tabSelected.setAttribute('aria-selected', true);
+
     const id = $tabSelected.id;
     console.log(id);
     const $tabPanel = document.querySelector(`[aria-labelledby=${id}]`);
+    const $tabPanelSelected = document.querySelector('.tabPanel:not([hidden])');
     $tabPanel.hidden = false;
+    $tabPanelSelected.hidden = true;
 }
 
 $tabList.forEach(($tab, index) => {
