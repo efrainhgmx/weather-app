@@ -15,3 +15,7 @@ export function formatTemp(value) {
 export function sunTimeFormat(sunTime) {
     return new Date(sunTime * 1000);
 }
+
+export function formatWeekList(rawData) {
+    
+}
