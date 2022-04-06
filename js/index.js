@@ -1,5 +1,5 @@
 import weeklyWeather from "./current-weather.js";
-import currentWeather from "./current-weather.js";
+import currentWeather from "./weekly-weather.js";
 import { viewportSize } from "./utils/viewport.js";
 import './tabs.js';
 
@@ -10,3 +10,4 @@ viewportSize($app);
 viewportSize($loading);
 
 currentWeather();
+weeklyWeather();
