@@ -21,7 +21,7 @@ export function formatWeekList(rawData) {
     const weeklist = [];
     rawData.forEach((item, index) => {
         dayList.push(item);
-        if(index + 1 % 8 === 0) {
+        if((index + 1) % 8 === 0) {
             weeklist.push(dayList);
             dayList = []
         } 

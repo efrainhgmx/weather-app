@@ -11,5 +11,6 @@ export default async function weeklyWeather() {
    const { isError: weeklyWeatherError,  data: weather } = await getWeeklyWeather(lat, lon);
    if(weeklyWeatherError) return console.warn('Algo esta mal trayendo los dias');
    const weeklist = formatWeekList(weather.list);
+   console.log(weeklist);
    configWeeklyWeather(weather);
 }
