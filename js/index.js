@@ -1,3 +1,4 @@
+import weeklyWeather from "./current-weather.js";
 import currentWeather from "./current-weather.js";
 import { viewportSize } from "./utils/viewport.js";
 import './tabs.js';
