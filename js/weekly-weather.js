@@ -1,12 +1,14 @@
 import { getWeeklyWeather } from "./services/weather.js";
 import { getLatLon } from "./geolocation.js"
-import { formatWeekList } from "./utils/format-data.js"
+import { formatWeekList } from "./utils/format-data.js";
+import { createDOM } from "./utils/dom.js";
 
 function configWeeklyWeather(weeklist) {
  const $container = document.querySelector('.weeklyWeather');
 
  weeklist.forEach((item) => {
-    $container.append('<h2>Hola</h2>') 
+     const $el = createDOM('<h2>hola que ace</h2>')
+    $container.append($el); 
  })
 }
 
