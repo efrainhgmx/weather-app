@@ -1,8 +1,13 @@
 import { getWeeklyWeather } from "./services/weather.js";
 import { getLatLon } from "./geolocation.js"
 import { formatWeekList } from "./utils/format-data.js"
-function configWeeklyWeather(weather) {
-    console.log("Nuevo modulo", weather)
+
+function configWeeklyWeather(weeklist) {
+ const $container = document.querySelector('.weeklyWeather');
+
+ weeklist.forEach((item) => {
+    $container.append('<h2>Hola</h2>') 
+ })
 }
 
 export default async function weeklyWeather() {
@@ -12,5 +17,5 @@ export default async function weeklyWeather() {
    if(weeklyWeatherError) return console.warn('Algo esta mal trayendo los dias');
    const weeklist = formatWeekList(weather.list);
    console.log(weeklist);
-   configWeeklyWeather(weather);
+   configWeeklyWeather(weeklist);
 }
