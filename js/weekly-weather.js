@@ -7,7 +7,7 @@ function configWeeklyWeather(weeklist) {
  const $container = document.querySelector('.weeklyWeather');
 
  weeklist.forEach((item) => {
-     const $el = createDOM('<h2>hola que ace</h2>')
+    const $el = createDOM('<h2>hola que ace</h2>')
     $container.append($el); 
  })
 }
