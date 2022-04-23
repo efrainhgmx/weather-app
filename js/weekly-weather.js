@@ -14,12 +14,20 @@ function tabPanelTemplate(id) {
  </div> `;
 }
 
+function createTabPanel(id) {
+   const $panel = createDOM(tabPanelTemplate(id));
+   if(id > 0) {
+      $panel.hidden = true;
+   }
+   return $panel;
+}
+
 function configWeeklyWeather(weeklist) {
  const $container = document.querySelector('.weeklyWeather');
 
  weeklist.forEach((item, index) => {
-    const $el = createDOM(tabPanelTemplate(index));
-    $container.append($el); 
+    const $panel = createTabPanel(index);
+    $container.append($panel); 
  })
 }
 
