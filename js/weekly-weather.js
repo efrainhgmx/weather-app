@@ -3,11 +3,22 @@ import { getLatLon } from "./geolocation.js"
 import { formatWeekList } from "./utils/format-data.js";
 import { createDOM } from "./utils/dom.js";
 
+function tabPanelTemplate() {
+   return `<div class="tabPanel" tabindex="0" aria-labelledby="tab-0">
+   <div class="dayWeather" id="dayWeather-0">
+     <ul class="dayWeather-list" id="dayWeather-list-0">
+         TabPanel
+     </ul>
+   </div>
+
+ </div> `;
+}
+
 function configWeeklyWeather(weeklist) {
  const $container = document.querySelector('.weeklyWeather');
 
  weeklist.forEach((item) => {
-    const $el = createDOM('<h2>hola que ace</h2>')
+    const $el = createDOM(tabPanelTemplate());
     $container.append($el); 
  })
 }
