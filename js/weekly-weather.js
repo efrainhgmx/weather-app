@@ -2,6 +2,7 @@ import { getWeeklyWeather } from "./services/weather.js";
 import { getLatLon } from "./geolocation.js"
 import { formatWeekList } from "./utils/format-data.js";
 import { createDOM } from "./utils/dom.js";
+import { periodTimeTemplate } from "./period-time.js";
 
 function tabPanelTemplate(id) {
    return `<div class="tabPanel" tabindex="0" aria-labelledby="tab-${id}">
@@ -25,9 +26,12 @@ function createTabPanel(id) {
 function configWeeklyWeather(weeklist) {
  const $container = document.querySelector('.weeklyWeather');
 
- weeklist.forEach((item, index) => {
+ weeklist.forEach((day, index) => {
     const $panel = createTabPanel(index);
     $container.append($panel); 
+    day.forEach((weather, indexWeather) => {
+         $panel.append(`Clima ${indexWeather}`)
+    })
  })
 }
 
