@@ -2,7 +2,7 @@ import { getWeeklyWeather } from "./services/weather.js";
 import { getLatLon } from "./geolocation.js"
 import { formatWeekList } from "./utils/format-data.js";
 import { createDOM } from "./utils/dom.js";
-import { periodTimeTemplate, createPeriodTime } from "./period-time.js";
+import { createPeriodTime } from "./period-time.js";
 import draggable from "./draggable.js";
 
 function tabPanelTemplate(id) {
