@@ -131,6 +131,9 @@ export default function draggable($element, config = defaultConfig) {
         widgetPosition = widgetPosition + movementY
         logger(movementY);
         startY = cursorY;
+        if(widgetPosition > HIDDEN_Y_POSITION) {
+            return false;
+        }
         setWidgetPosition(widgetPosition);
     }
 }
