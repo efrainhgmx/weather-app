@@ -1,5 +1,5 @@
 const defaultConfig = {
-    open: false,
+    open: true,
     debug: true,
     animatable: true
 }
@@ -10,6 +10,7 @@ export default function draggable($element, config = defaultConfig) {
     }
 
     let isOpen = config.open;
+    let isDragging = false;
     const elementRect = $element.getBoundingClientRect();
     const ELEMENT_BLOCK_SIZE = elementRect.height;
     const $marker = $element.querySelector('[data-marker]');
@@ -55,7 +56,13 @@ export default function draggable($element, config = defaultConfig) {
     };
 
     function toggle(event) {
-
+        if(!isDragging) {
+            if(!isOpen) {
+                open();
+            } else {
+                close();
+            }
+        }
     }
 
     function logger(message) {
