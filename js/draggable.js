@@ -66,6 +66,7 @@ export default function draggable($element, config = defaultConfig) {
     function startDrag(event) {
         isDragging = true;
         startY = pageY(event);
+        logger({startY})
     }
 
     function toggle(event) {
@@ -104,6 +105,9 @@ export default function draggable($element, config = defaultConfig) {
     function drag(event) {
         const cursorY = pageY(event);
         const movementY = cursorY - startY;
+        widgetPosition = widgetPosition + movementY
         logger(movementY);
+        startY = cursorY;
+        setWidgetPosition(widgetPosition);
     }
 }
