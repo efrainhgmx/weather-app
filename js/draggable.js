@@ -69,13 +69,12 @@ export default function draggable($element, config = defaultConfig) {
         logger({startY})
     }
 
-    function toggle(event) {
+    function toggle() {
         if(!isDragging) {
             if(!isOpen) {
-                open();
-            } else {
-                close();
-            }
+                return open();
+            } 
+            return close();
         }
     }
 
@@ -89,13 +88,14 @@ export default function draggable($element, config = defaultConfig) {
         logger('Abrir widget');
         isOpen = true;
         widgetPosition = VISIBLE_Y_POSITION;
-        setWidgetPosition(VISIBLE_Y_POSITION);
+        setWidgetPosition(widgetPosition);
     }
 
     function close() {
         logger('Cerrar widget')
         isOpen = false;
-        setWidgetPosition(HIDDEN_Y_POSITION)
+        widgetPosition = HIDDEN_Y_POSITION;
+        setWidgetPosition(widgetPosition)
     }
 
     function setWidgetPosition(value) {
