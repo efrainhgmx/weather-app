@@ -21,6 +21,43 @@ export default function draggable($element, config = defaultConfig) {
     let widetPosition = VISIBLE_Y_POSITION;
     
     isOpen ? open() : close();
+
+    $marker.addEventListener('click', handleClick);
+    $marker.addEventListener('pointerdown', handlePointerDown);
+    $marker.addEventListener('pointerup', handlePointerUp);
+    $marker.addEventListener('pointerout', handlePointerOut);
+    $marker.addEventListener('pointercancel', handlePointerCancel);
+    $marker.addEventListener('pointermove', handlePointerMove);
+
+    function handlePointerMove() {
+        logger('Pointer move')
+    }
+
+    function handlePointerCancel() {
+        logger('Pointer cancel')
+    }
+
+    function handlePointerOut() {
+        logger('Pointer out')
+    }
+
+    function handlePointerDown() {
+        logger('Pointer down')
+    }
+
+    function handlePointerUp() {
+        logger('Pointer up')
+    }
+
+    function handleClick(event) {
+        logger('click');
+        toggle(event)
+    };
+
+    function toggle(event) {
+
+    }
+
     function logger(message) {
         if(config.debug) {
             console.info(message);
