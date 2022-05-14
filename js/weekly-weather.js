@@ -28,10 +28,8 @@ function dayTabSelected() {
    const tabs = document.querySelectorAll('.dayWeather-item');
    tabs.forEach((element, index) => {
       element.addEventListener("click", () => {
-         (element.classList.contains('is-selected')) 
-            ? element.classList.remove('is-selected') 
-            : element.classList.add('is-selected');
-
+        tabs.forEach((tab) => tab.classList.remove('is-selected'));
+        element.classList.add('is-selected');
       });
    })
 }
