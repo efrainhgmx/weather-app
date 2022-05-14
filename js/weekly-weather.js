@@ -24,6 +24,18 @@ function createTabPanel(id) {
    return $panel;
 }
 
+function dayTabSelected() {
+   const tabs = document.querySelectorAll('.dayWeather-item');
+   tabs.forEach((element, index) => {
+      element.addEventListener("click", () => {
+         (element.classList.contains('is-selected')) 
+            ? element.classList.remove('is-selected') 
+            : element.classList.add('is-selected');
+
+      });
+   })
+}
+
 function configWeeklyWeather(weeklist) {
  const $container = document.querySelector('.tabs');
 
@@ -34,6 +46,8 @@ function configWeeklyWeather(weeklist) {
          $panel.querySelector('.dayWeather-list').append(createPeriodTime(weather));
     })
  })
+
+ dayTabSelected();
 }
 
 export default async function weeklyWeather() {
