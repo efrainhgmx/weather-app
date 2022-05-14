@@ -13,10 +13,10 @@ function tabPanelTemplate(id) {
      </ul>
      </div>
      <div class="dayWeather-summary">
-      <p>Máx: <strong>26°</strong></p>
-      <p>Min: <strong>15°</strong></p>
-      <p>Viento: <strong>16Km-h</strong></p>
-      <p>Humedad <strong>63%</strong></p>
+      <p>Máx: <strong class="max">26°</strong></p>
+      <p>Min: <strong class="min">15°</strong></p>
+      <p>Viento: <strong class="wind">16Km-h</strong></p>
+      <p>Humedad <strong class="humidity">63%</strong></p>
      </div>
  </div> `;
 }
@@ -31,6 +31,8 @@ function createTabPanel(id) {
 
 function dayTabSelected() {
    const tabs = document.querySelectorAll('.dayWeather-item');
+   const firstTab = tabs[0];
+   firstTab.classList.add('is-selected'); 
    tabs.forEach((element, index) => {
       element.addEventListener("click", () => {
         tabs.forEach((tab) => tab.classList.remove('is-selected'));
