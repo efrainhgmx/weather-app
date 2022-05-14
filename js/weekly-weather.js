@@ -11,8 +11,13 @@ function tabPanelTemplate(id) {
      <ul class="dayWeather-list" id="dayWeather-list-${id}">
          
      </ul>
-   </div>
-
+     </div>
+     <div class="dayWeather-summary">
+      <p>Máx: <strong>26°</strong></p>
+      <p>Min: <strong>15°</strong></p>
+      <p>Viento: <strong>16Km-h</strong></p>
+      <p>Humedad <strong>63%</strong></p>
+     </div>
  </div> `;
 }
 
@@ -32,6 +37,7 @@ function dayTabSelected() {
         element.classList.add('is-selected');
       });
    })
+
 }
 
 function configWeeklyWeather(weeklist) {
