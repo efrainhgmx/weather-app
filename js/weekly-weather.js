@@ -5,6 +5,10 @@ import { createDOM } from "./utils/dom.js";
 import { createPeriodTime } from "./period-time.js";
 import draggable from "./draggable.js";
 
+let $max,
+    $min,
+    $humidity,
+    $wind
 function tabPanelTemplate(id) {
    return `<div class="tabPanel" tabindex="0" aria-labelledby="tab-${id}">
    <div class="dayWeather" id="dayWeather-${id}">
@@ -36,7 +40,10 @@ function dayWeatherSummary(weeklist, dayTabIndex, timeTabIndex) {
    const humidity = formatHumidity(weatherData?.main?.humidity);
    const wind = formatWind(weatherData?.wind?.speed);
 
-   console.table(max,min,humidity,wind);
+   $max.textContent = max;
+   $min.textContent = min;
+   $humidity.textContent = humidity;
+   $wind.textContent = wind;
 }
 
 function dayTabSelected(weeklist) {
@@ -51,7 +58,7 @@ function dayTabSelected(weeklist) {
         element.classList.add('is-selected');
         currentIndex = index;
         dayIndex = (index > 7) ? Math.floor((index + 1) / 8) : 0;
-        dayWeatherSummary(weeklist, dayIndex ,currentIndex);
+        dayWeatherSummary(weeklist, dayIndex, currentIndex);
         console.log(currentIndex);
       });
    })
@@ -70,6 +77,10 @@ function configWeeklyWeather(weeklist) {
     })
  })
 
+ $max = document.querySelector('.max'),
+ $min = document.querySelector('.min'),
+ $humidity = document.querySelector('.humidity'),
+ $wind = document.querySelector('.wind');
  dayTabSelected(weeklist);
 }
 
