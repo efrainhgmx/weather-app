@@ -12,6 +12,14 @@ export function formatTemp(value) {
     return `${Math.floor(value)}°`;
 }
 
+export function formatHumidity(value) {
+    return `${value}%`;
+}
+
+export function formatWind(value) {
+    return `${Math.floor(value)} Km-h`;
+}
+
 export function sunTimeFormat(sunTime) {
     return new Date(sunTime * 1000);
 }

@@ -1,6 +1,6 @@
 import { getWeeklyWeather } from "./services/weather.js";
 import { getLatLon } from "./geolocation.js"
-import { formatWeekList, formatTemp } from "./utils/format-data.js";
+import { formatWeekList, formatTemp, formatHumidity, formatWind } from "./utils/format-data.js";
 import { createDOM } from "./utils/dom.js";
 import { createPeriodTime } from "./period-time.js";
 import draggable from "./draggable.js";
@@ -30,13 +30,13 @@ function createTabPanel(id) {
 }
 
 function dayWeatherSummary(weeklist, dayTabIndex, timeTabIndex) {
-   console.log({dayTabIndex}, {timeTabIndex});
-   console.log(weeklist[dayTabIndex][timeTabIndex]);
-   const max = formatTemp(weeklist?.main?.temp_max);
-   const min = formatTemp(weeklist?.main?.temp_min);
-   const humidity = weeklist?.main?.humidity;
-   const wind = weeklist?.wind?.speed;
+   const weatherData = weeklist[dayTabIndex][timeTabIndex];
+   const max = formatTemp(weatherData?.main?.temp_max);
+   const min = formatTemp(weatherData?.main?.temp_min);
+   const humidity = formatHumidity(weatherData?.main?.humidity);
+   const wind = formatWind(weatherData?.wind?.speed);
 
+   console.table(max,min,humidity,wind);
 }
 
 function dayTabSelected(weeklist) {
