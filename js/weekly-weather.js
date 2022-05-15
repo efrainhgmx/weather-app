@@ -3,6 +3,7 @@ import { getLatLon } from "./geolocation.js"
 import { formatWeekList } from "./utils/format-data.js";
 import { createDOM } from "./utils/dom.js";
 import { createPeriodTime } from "./period-time.js";
+import { tabSelectedIndex } from "./tabs.js"
 import draggable from "./draggable.js";
 
 function tabPanelTemplate(id) {
@@ -29,17 +30,27 @@ function createTabPanel(id) {
    return $panel;
 }
 
+function dayWeatherSummary(dayTabIndex, timeTabIndex) {
+   console.log({dayTabIndex}, {timeTabIndex});
+
+}
+
 function dayTabSelected() {
    const tabs = document.querySelectorAll('.dayWeather-item');
    const firstTab = tabs[0];
+   let currentIndex = 0;
    firstTab.classList.add('is-selected'); 
    tabs.forEach((element, index) => {
       element.addEventListener("click", () => {
         tabs.forEach((tab) => tab.classList.remove('is-selected'));
         element.classList.add('is-selected');
+        currentIndex = index;
+        dayWeatherSummary(tabSelectedIndex(), currentIndex);
+        console.log(currentIndex);
       });
    })
 
+   dayWeatherSummary(tabSelectedIndex(), currentIndex);
 }
 
 function configWeeklyWeather(weeklist) {
