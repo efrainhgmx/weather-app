@@ -1,9 +1,8 @@
 import { getWeeklyWeather } from "./services/weather.js";
 import { getLatLon } from "./geolocation.js"
-import { formatWeekList } from "./utils/format-data.js";
+import { formatWeekList, formatTemp } from "./utils/format-data.js";
 import { createDOM } from "./utils/dom.js";
 import { createPeriodTime } from "./period-time.js";
-import { tabSelectedIndex } from "./tabs.js"
 import draggable from "./draggable.js";
 
 function tabPanelTemplate(id) {
@@ -30,12 +29,17 @@ function createTabPanel(id) {
    return $panel;
 }
 
-function dayWeatherSummary(dayTabIndex, timeTabIndex) {
+function dayWeatherSummary(weeklist, dayTabIndex, timeTabIndex) {
    console.log({dayTabIndex}, {timeTabIndex});
+   console.log(weeklist[dayTabIndex][timeTabIndex]);
+   const max = formatTemp(weeklist?.main?.temp_max);
+   const min = formatTemp(weeklist?.main?.temp_min);
+   const humidity = weeklist?.main?.humidity;
+   const wind = weeklist?.wind?.speed;
 
 }
 
-function dayTabSelected() {
+function dayTabSelected(weeklist) {
    const tabs = document.querySelectorAll('.dayWeather-item');
    const firstTab = tabs[0];
    let currentIndex = 0;
@@ -47,12 +51,12 @@ function dayTabSelected() {
         element.classList.add('is-selected');
         currentIndex = index;
         dayIndex = (index > 7) ? Math.floor((index + 1) / 8) : 0;
-        dayWeatherSummary(dayIndex ,currentIndex);
+        dayWeatherSummary(weeklist, dayIndex ,currentIndex);
         console.log(currentIndex);
       });
    })
 
-   dayWeatherSummary(dayIndex, currentIndex);
+   dayWeatherSummary(weeklist, dayIndex, currentIndex);
 }
 
 function configWeeklyWeather(weeklist) {
@@ -66,7 +70,7 @@ function configWeeklyWeather(weeklist) {
     })
  })
 
- dayTabSelected();
+ dayTabSelected(weeklist);
 }
 
 export default async function weeklyWeather() {

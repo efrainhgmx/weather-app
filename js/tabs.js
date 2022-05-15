@@ -17,10 +17,6 @@ function nextDay(day) {
     return (day === 6 ) ? 0 : day + 1;
 }
 
-export function tabSelectedIndex (id) {
-    return id ? Number(id.replace("tab-", "")) : 0;
-}
-
 function handleSelectTabClick(event) {
     const $tabSelected = event.target;
     const $tabActive = document.querySelector('.tab[aria-selected="true"');
