@@ -39,18 +39,20 @@ function dayTabSelected() {
    const tabs = document.querySelectorAll('.dayWeather-item');
    const firstTab = tabs[0];
    let currentIndex = 0;
+   let dayIndex = 0;
    firstTab.classList.add('is-selected'); 
    tabs.forEach((element, index) => {
       element.addEventListener("click", () => {
         tabs.forEach((tab) => tab.classList.remove('is-selected'));
         element.classList.add('is-selected');
         currentIndex = index;
-        dayWeatherSummary(tabSelectedIndex(), currentIndex);
+        dayIndex = (index > 7) ? Math.floor((index + 1) / 8) : 0;
+        dayWeatherSummary(dayIndex ,currentIndex);
         console.log(currentIndex);
       });
    })
 
-   dayWeatherSummary(tabSelectedIndex(), currentIndex);
+   dayWeatherSummary(dayIndex, currentIndex);
 }
 
 function configWeeklyWeather(weeklist) {
