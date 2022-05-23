@@ -36,7 +36,7 @@ function setBackground($element, conditionCode, solarStatus) {
     const weatherType = weatherConditionsCodes[conditionCode];
     //For Retina Display devices or 2x pixel density
     const size = (window.matchMedia('(-webkit-min-device-pixel-ratio: 2)').matches) ? '@2x' : '';
-    $element.style.backgroundImage = `url(../images/${solarStatus}-${weatherType}${size}.jpg)`;
+    $element.style.backgroundImage = `url(https://efrainhgmx.com/weather-app/images/${solarStatus}-${weatherType}${size}.jpg)`;
 }
 
 
