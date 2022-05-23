@@ -8,7 +8,9 @@ import draggable from "./draggable.js";
 let $max,
     $min,
     $humidity,
-    $wind
+    $wind;
+
+export let defaultWeather;
 function tabPanelTemplate(id) {
    return `<div class="tabPanel" tabindex="0" aria-labelledby="tab-${id}">
    <div class="dayWeather" id="dayWeather-${id}">
@@ -33,7 +35,7 @@ function createTabPanel(id) {
    return $panel;
 }
 
-function dayWeatherSummary(weeklist, dayTabIndex = 0, timeTabIndex = 0) {
+export function dayWeatherSummary(weeklist = defaultWeather, dayTabIndex = 0, timeTabIndex = 0) {
    const weatherData = weeklist[dayTabIndex][timeTabIndex];
    const max = formatTemp(weatherData?.main?.temp_max);
    const min = formatTemp(weatherData?.main?.temp_min);
@@ -92,6 +94,7 @@ export default async function weeklyWeather() {
    const { isError: weeklyWeatherError,  data: weather } = await getWeeklyWeather(lat, lon);
    if(weeklyWeatherError) return console.warn('Algo esta mal trayendo los dias');
    const weeklist = formatWeekList(weather.list);
+   defaultWeather = weeklist;
    console.log(weeklist);
    configWeeklyWeather(weeklist);
    draggable($container)

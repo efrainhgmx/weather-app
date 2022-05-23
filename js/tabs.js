@@ -1,3 +1,5 @@
+import {  dayWeatherSummary, defaultWeather } from "./weekly-weather.js";
+ 
 const $tabsCotainer = document.querySelector('#tabs');
 const $tabList = $tabsCotainer.querySelectorAll('.tab');
 const today = new Date();
@@ -26,9 +28,12 @@ function handleSelectTabClick(event) {
     const id = $tabSelected.id;
     const $tabPanel = document.querySelector(`[aria-labelledby=${id}]`);
     const $tabPanelSelected = document.querySelector('.tabPanel:not([hidden])');
+    const tabRefNumber = Number(id.replace("tab-", "")); 
     $tabPanel.hidden = false;
     $tabPanelSelected.hidden = true;
     console.log(id);
+    dayWeatherSummary(defaultWeather, tabRefNumber)
+    
 }
 
 $tabList.forEach(($tab, index) => {
