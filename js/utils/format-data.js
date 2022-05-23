@@ -37,3 +37,11 @@ export function formatWeekList(rawData) {
 
     return weeklist;
 }
+
+export function currentTimeSelected(index) {
+    let indexFormated = 0;
+    const number = (Math.floor(index / 8))
+    indexFormated = (index - (7 * number)) - number;
+    
+    return indexFormated;
+}

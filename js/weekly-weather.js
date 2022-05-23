@@ -1,6 +1,6 @@
 import { getWeeklyWeather } from "./services/weather.js";
 import { getLatLon } from "./geolocation.js"
-import { formatWeekList, formatTemp, formatHumidity, formatWind } from "./utils/format-data.js";
+import { formatWeekList, formatTemp, formatHumidity, formatWind, currentTimeSelected } from "./utils/format-data.js";
 import { createDOM } from "./utils/dom.js";
 import { createPeriodTime } from "./period-time.js";
 import draggable from "./draggable.js";
@@ -56,8 +56,8 @@ function dayTabSelected(weeklist) {
       element.addEventListener("click", () => {
         tabs.forEach((tab) => tab.classList.remove('is-selected'));
         element.classList.add('is-selected');
-        currentIndex = index;
-        dayIndex = (index > 7) ? Math.floor((index + 1) / 8) : 0;
+        currentIndex = (index > 7) ? currentTimeSelected(index) : index;
+        dayIndex = (index > 7) ? Math.floor(index / 8) : 0;
         dayWeatherSummary(weeklist, dayIndex, currentIndex);
         console.log({currentIndex});
         console.log({dayIndex})
