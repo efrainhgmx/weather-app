@@ -40,6 +40,8 @@ function dayWeatherSummary(weeklist, dayTabIndex = 0, timeTabIndex = 0) {
    const humidity = formatHumidity(weatherData?.main?.humidity);
    const wind = formatWind(weatherData?.wind?.speed);
 
+   console.log({max}, {min}, {humidity}, {wind});
+   console.log($max, $min, $humidity, $wind);
    $max.textContent = max;
    $min.textContent = min;
    $humidity.textContent = humidity;
@@ -59,8 +61,7 @@ function dayTabSelected(weeklist) {
         currentIndex = (index > 7) ? currentTimeSelected(index) : index;
         dayIndex = (index > 7) ? Math.floor(index / 8) : 0;
         dayWeatherSummary(weeklist, dayIndex, currentIndex);
-        console.log({currentIndex});
-        console.log({dayIndex})
+        //console.log({currentIndex}, {dayIndex});
       });
    })
 
