@@ -40,12 +40,11 @@ function dayWeatherSummary(weeklist, dayTabIndex = 0, timeTabIndex = 0) {
    const humidity = formatHumidity(weatherData?.main?.humidity);
    const wind = formatWind(weatherData?.wind?.speed);
 
-   console.log({max}, {min}, {humidity}, {wind});
-   console.log($max, $min, $humidity, $wind);
-   $max.textContent = max;
-   $min.textContent = min;
-   $humidity.textContent = humidity;
-   $wind.textContent = wind;
+
+   $max[dayTabIndex].textContent = max;
+   $min[dayTabIndex].textContent = min;
+   $humidity[dayTabIndex].textContent = humidity;
+   $wind[dayTabIndex].textContent = wind;
 }
 
 function dayTabSelected(weeklist) {
@@ -79,10 +78,10 @@ function configWeeklyWeather(weeklist) {
     })
  })
 
- $max = document.querySelector('.max'),
- $min = document.querySelector('.min'),
- $humidity = document.querySelector('.humidity'),
- $wind = document.querySelector('.wind');
+ $max = document.querySelectorAll('.max'),
+ $min = document.querySelectorAll('.min'),
+ $humidity = document.querySelectorAll('.humidity'),
+ $wind = document.querySelectorAll('.wind');
  dayTabSelected(weeklist);
 }
 
