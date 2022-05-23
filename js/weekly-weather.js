@@ -33,7 +33,7 @@ function createTabPanel(id) {
    return $panel;
 }
 
-function dayWeatherSummary(weeklist, dayTabIndex, timeTabIndex) {
+function dayWeatherSummary(weeklist, dayTabIndex = 0, timeTabIndex = 0) {
    const weatherData = weeklist[dayTabIndex][timeTabIndex];
    const max = formatTemp(weatherData?.main?.temp_max);
    const min = formatTemp(weatherData?.main?.temp_min);
@@ -59,7 +59,8 @@ function dayTabSelected(weeklist) {
         currentIndex = index;
         dayIndex = (index > 7) ? Math.floor((index + 1) / 8) : 0;
         dayWeatherSummary(weeklist, dayIndex, currentIndex);
-        console.log(currentIndex);
+        console.log({currentIndex});
+        console.log({dayIndex})
       });
    })
 
